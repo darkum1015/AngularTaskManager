@@ -1,0 +1,35 @@
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>Sr.No.</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>State</th>
+            <th>Priority</th>
+            <th>Project</th>
+            <th>Created On</th>
+            <th>Created By</th>
+            <th>Assigned To</th>
+            <th>Expected Start</th>
+            <th>Expected Duration</th>
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat="task in homeCtrl.taskList">
+            <td>{{$index +1}}</td>
+            <td>{{task.name}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.state}}</td>
+            <td>{{task.priority}}</td>
+            <td>{{task.project}}</td>
+            <td>{{task.created}}</td>
+            <td>{{task.createdBy}}</td>
+            <td>{{task.assignedTo}}</td>
+            <td>{{task.startDate}}</td>
+            <td>{{task.duration}}</td>
+            <td>
+                <span ng-click="homeCtrl.editBears(task._id)">Edit</span>&nbsp;<span>Delete</span>
+            </td>
+        </tr>
+
+    </table>
+</div>
