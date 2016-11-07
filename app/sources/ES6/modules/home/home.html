@@ -1,17 +1,20 @@
 <div class="row">
+    <button type="button" class="btn btn-primary pull-right" ng-click="homeCtrl.showCreateTask()">Create +</button>
+</div>
+<div class="row">
     <table class="table">
         <tr>
             <th>Sr.No.</th>
             <th>Name</th>
             <th>Description</th>
-            <th>State</th>
+            <th>Status</th>
             <th>Priority</th>
             <th>Project</th>
             <th>Created On</th>
             <th>Created By</th>
             <th>Assigned To</th>
             <th>Expected Start</th>
-            <th>Expected Duration</th>
+            <th>Estimate (days)</th>
             <th>Action</th>
         </tr>
         <tr ng-repeat="task in homeCtrl.taskList">
@@ -27,7 +30,7 @@
             <td>{{task.startDate}}</td>
             <td>{{task.duration}}</td>
             <td>
-                <span ng-click="homeCtrl.editBears(task._id)">Edit</span>&nbsp;<span>Delete</span>
+                <span ng-click="homeCtrl.editTask(task._id)">Edit</span>&nbsp;<span ng-click="homeCtrl.deleteTask(task._id)">Delete</span>
             </td>
         </tr>
 

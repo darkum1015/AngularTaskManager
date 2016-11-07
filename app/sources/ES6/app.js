@@ -8,6 +8,12 @@
         }).when('/login', {
             templateUrl: "app/js/modules/login/login.html",
             controller: "LoginController as loginCtrl"
+        }).when('/create/task',{
+            templateUrl: "app/js/modules/Create/tasks/create-task.html",
+            controller: "CreateTaskController as createTaskCtrl"
+        }).when('/edit/task/:id',{
+            templateUrl: "app/js/modules/edit/tasks/edit-task.html",
+            controller: "EditTaskController as editTaskCtrl"
         })
             .otherwise({
                 templateUrl: "app/js/modules/home/home.html",
