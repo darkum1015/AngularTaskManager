@@ -6,17 +6,33 @@
   function HomeController($http, UtilityService) {
     var vm = this;
     vm.taskList = [];
+    vm.userList = [];
     vm.deleteTask = deleteTask;
     vm.editTask = editTask;
     vm.showCreateTask = showCreateTask;
+    UtilityService.getAllUsers().then(function success(userList) {
+      vm.userList = userList;
+    }, function failure(error) {
+      alert("error");
+    });
     getAllTasks();
     function getAllTasks() {
       $http({
         "url": "http://localhost:8300/api/tasks",
         "method": 'GET'
       }).then(function success(response) {
-        vm.taskList = response.data.rows;
-      }, function failure(error) {});
+        vm.taskList = normaliseTaskList(response.data.rows);
+      }, function failure(error) {
+        alert("error");
+      });
+    }
+    function normaliseTaskList(taskList) {
+      for (var task in taskList) {
+        if (taskList[task].assignedTo) {
+          taskList[task].resolvedUser = UtilityService.resolveUsernameFromId(taskList[task].assignedTo, vm.userList);
+        }
+      }
+      return taskList;
     }
     function showCreateTask() {
       if (UtilityService.isAuthorized()) {
@@ -39,19 +55,12 @@
           url: "http://localhost:8300/api/tasks/" + taskId,
           method: "DELETE"
         }).then(function success(response) {
-          removeTableRows(taskId);
+          UtilityService.removeTableRows(taskId, vm.taskList);
         }, function failure(error) {
-          alert("failed");
+          alert(error.data.message);
         });
       } else {
         UtilityService.navigateTo('/login');
-      }
-    }
-    function removeTableRows(itemId) {
-      for (var item in vm.taskList) {
-        if (vm.taskList[item]._id == itemId) {
-          vm.taskList.splice(item, 1);
-        }
       }
     }
   }

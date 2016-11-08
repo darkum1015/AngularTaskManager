@@ -7,10 +7,10 @@
         var vm = this;
         vm.taskId = "";
         vm.taskObj = [];
-        vm.userList = [];
+
         vm.authToken=null;
         vm.saveTask = saveTask;
-        getUsers();
+
         if(UtilityService.isAuthorized()){
             vm.authToken = localStorage.getItem('authToken');
             getTaskById();
@@ -72,15 +72,6 @@
                 UtilityService.navigateTo('/login');
             }
         }
-        function getUsers(){
-            $http({
-                url: "http://localhost:8300/api/users",
-                method:"GET"
-            }).then(function success(response){
-                vm.userList = response.data;
-            },function failure(error){
-                alert("Error");
-            });
-        }
+
     }
 })();
