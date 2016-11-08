@@ -8,7 +8,7 @@
     function CreateTaskController($http,$q,UtilityService){
         var vm = this;
         vm.taskObj = [];
-        vm.userList = [];
+
         vm.taskObj.name ="";
         vm.taskObj.description="";
         vm.taskObj.state="";
@@ -22,7 +22,7 @@
         vm.createTask = createTask;
         vm.authToken = localStorage.getItem('authToken');
 
-        getUsers();
+
 
         function createTask(){
             if(vm.authToken){
@@ -58,16 +58,7 @@
 
         }
 
-        function getUsers(){
-            $http({
-                url: "http://localhost:8300/api/users",
-                method:"GET"
-            }).then(function success(response){
-                vm.userList = response.data;
-            },function failure(error){
-                alert("Error");
-            });
-        }
+
     }
 
 })();
