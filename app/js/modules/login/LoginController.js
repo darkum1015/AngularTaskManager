@@ -2,8 +2,8 @@
 (function() {
   var appModule = angular.module('app.module');
   appModule.controller('LoginController', LoginController);
-  LoginController.$inject = ['$http', '$q', '$location'];
-  function LoginController($http, $q, $location) {
+  LoginController.$inject = ['$http', '$q', 'UtilityService'];
+  function LoginController($http, $q, UtilityService) {
     var vm = this;
     vm.loginFailed = false;
     vm.loginFailureMessage = "";
@@ -18,7 +18,7 @@
           if (data.success) {
             localStorage.setItem('authToken', data.token);
             vm.loginFailed = false;
-            $location.path('/home');
+            UtilityService.navigateTo('/home');
           } else {
             vm.loginFailed = true;
             vm.loginFailureMessage = data.message;
