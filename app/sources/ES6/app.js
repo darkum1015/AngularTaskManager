@@ -14,6 +14,9 @@
         }).when('/edit/task/:id',{
             templateUrl: "app/js/modules/edit/tasks/edit-task.html",
             controller: "EditTaskController as editTaskCtrl"
+        }).when('/create/user',{
+            templateUrl: "app/js/modules/Create/users/create-user.html",
+            controller: "CreateUserController as createUserCtrl"
         })
             .otherwise({
                 templateUrl: "app/js/modules/home/home.html",
