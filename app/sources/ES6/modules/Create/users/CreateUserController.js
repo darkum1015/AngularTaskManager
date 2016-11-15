@@ -17,6 +17,9 @@
 
         class User{
             constructor(userObj){
+                if(!(this instanceof (User))){
+                    return new User(userObj);
+                }
                 this.displayName = userObj.displayName;
                 this.name = userObj.name;
                 this.password = userObj.password;
