@@ -1,0 +1,24 @@
+<form role="form" class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-2">Name</label>
+        <div class="col-md-10">
+
+            <input type="text" class="form-control" ng-model="createProjectCtrl.newProjectObj.name"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Duration</label>
+        <div class="col-md-10">
+
+            <input type="text" class="form-control" ng-model="createProjectCtrl.newProjectObj.duration"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tasks</label>
+        <div class="col-md-10">
+
+            <input type="text" class="form-control" ng-model="createProjectCtrl.newProjectObj.tasks"/>
+        </div>
+    </div>
+</form>
+<button type="button" ng-click="createProjectCtrl.createProject()">Create project</button>

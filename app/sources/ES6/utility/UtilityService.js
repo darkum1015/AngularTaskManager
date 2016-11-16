@@ -53,5 +53,22 @@
             return deferred.promise;
         }
 
+        this.getAllProjects = function(){
+            var deferred = $q.defer();
+            var projectList =[];
+            $http({
+                url:"http://localhost:8300/api/projects",
+                method:"GET"
+            }).then(function success(response) {
+               projectList = response.data;
+                deferred.resolve(projectList);
+
+            },function failure(error){
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
     }
 })();

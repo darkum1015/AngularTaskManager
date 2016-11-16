@@ -17,6 +17,9 @@
         }).when('/create/user',{
             templateUrl: "app/js/modules/Create/users/create-user.html",
             controller: "CreateUserController as createUserCtrl"
+        }).when('/create/project',{
+            templateUrl: "app/js/modules/create/projects/create-project.html",
+            controller: "CreateProjectController as createProjectCtrl"
         })
             .otherwise({
                 templateUrl: "app/js/modules/home/home.html",
